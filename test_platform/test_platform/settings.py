@@ -14,7 +14,6 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -37,8 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'personal',
+    'user_app',
+    'project_app',
+    'module_app',
     'js_demo',
+    'testcase_app',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'test_platform.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,27 +78,13 @@ WSGI_APPLICATION = 'test_platform.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 # SQLite3
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'dev.sqlite3'),
-#     }
-# }
-
-# DATABASES = {
-#     'default':  {
-#             'ENGINE': 'django.db.backends.mysql',
-#             'HOST': '127.0.0.1',
-#             'PORT': '3306',
-#             'NAME': 'my_db1',
-#             'USER': 'root',
-#             'PASSWORD': 'root',
-#             'OPTIONS':  {
-#                 'init_command': "SET sql_mode='NO_ENGINE_SUBSTITUTION,NO_AUTO_CREATE_USER'",
-#                         },
-#                 }
-#             }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'dev.sqlite3'),
+    }
+}
+"""
 # MySQL
 DATABASES = {
     'default': {
@@ -106,7 +94,7 @@ DATABASES = {
         },
     }
 }
-
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
